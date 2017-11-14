@@ -50,6 +50,39 @@ TeamNames=['Arizona Cardinals',
 'Tennessee Titans',
 'Washington Redskins'
 ]
+TeamDict={ 'ARI' : 'Arizona Cardinals',
+'ATL' : 'Atlanta Falcons',
+'BAL' : 'Baltimore Ravens',
+'BUF' : 'Buffalo Bills',
+'CAR' : 'Carolina Panthers',
+'CHI' : 'Chicago Bears',
+'CIN' : 'Cincinnati Bengals',
+'CLE' : 'Cleveland Browns',
+'DAL' : 'Dallas Cowboys',
+'DEN' : 'Denver Broncos',
+'DET' : 'Detroit Lions',
+'GB' : 'Green Bay Packers',
+'HOU' : 'Houston Texans',
+'IND' : 'Indianapolis Colts',
+'JAX' : 'Jacksonville Jaguars',
+'KC' : 'Kansas City Chiefs',
+'LAC' : 'Los Angeles Chargers',
+'LAR' : 'Los Angeles Rams',
+'MIA' : 'Miami Dolphins',
+'MIN' : 'Minnesota Vikings',
+'NE' : 'New England Patriots',
+'NO' : 'New Orleans Saints',
+'NYG' : 'New York Giants',
+'NYJ' : 'New York Jets',
+'OAK' : 'Oakland Raiders',
+'PHI' : 'Philadelphia Eagles',
+'PIT' : 'Pittsburgh Steelers',
+'SF' : 'San Francisco 49ers',
+'SEA' : 'Seattle Seahawks',
+'TB' : 'Tampa Bay Buccaneers',
+'TEN' : 'Tennessee Titans',
+'WAS' : 'Washington Redskins'
+}
 
 ARI_list = []
 ATL_list = []
@@ -84,6 +117,43 @@ TB_list = []
 TEN_list = []
 WAS_list = []
 
+LstDict = { 'ARI' : ARI_list,
+'ATL' : ATL_list,
+'BAL' : BAL_list,
+'BUF' : BUF_list,
+'CAR' : CAR_list,
+'CHI' : CHI_list,
+'CIN' : CIN_list,
+'CLE' : CLE_list,
+'DAL' : DAL_list,
+'DEN' : DEN_list,
+'DET' : DET_list,
+'GB' : GB_list,
+'HOU' : HOU_list,
+'IND' : IND_list,
+'JAX' : JAX_list,
+'KC' : KC_list,
+'LAC' : LAC_list,
+'LAR' : LAR_list,
+'MIA' : MIA_list,
+'MIN' : MIN_list,
+'NE' : NE_list,
+'NO' : NO_list,
+'NYG' : NYG_list,
+'NYJ' : NYJ_list,
+'OAK' : OAK_list,
+'PHI' : PHI_list,
+'PIT' : PIT_list,
+'SF' : SF_list,
+'SEA' : SEA_list,
+'TB' : TB_list,
+'TEN' : TEN_list,
+'WAS' : WAS_list,
+}
+
+def GetTeamName(user_choice):
+	return (TeamDict[user_choice])
+
 #WEEK1
 response1 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170815/2017-preseason-nfl-power-rankings-new-england-patriots-atlanta-falcons-seattle-seahawks-front')
 html1 = response1.read()
@@ -92,6 +162,7 @@ only_H2_level1 = SoupStrainer('h2')
 soup1 = BeautifulSoup(html1, 'html.parser', parse_only = only_H2_level1)
 #Then we compare it against our team names to create a list in the same order as the rankings
 TeamOrder1 = soup1.find_all(string=TeamNames)
+#The next function adds the number to the list for each team, slowly building the list from which we'll plot our graph
 ARI_list.append((TeamOrder1.index('Arizona Cardinals') + 1))
 ATL_list.append((TeamOrder1.index('Atlanta Falcons') + 1))
 BAL_list.append((TeamOrder1.index('Baltimore Ravens') + 1))
@@ -476,4 +547,22 @@ TB_list.append((TeamOrder10.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder10.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder10.index('Washington Redskins') + 1))
 
-print BAL_list
+req = True
+while req:
+	print 'This app lists ESPN experts\' rankings for the team of your choice.'
+	user_choice = raw_input('Simply enter the 2-3 digit city code for the team from which you would like data.\n If you\'d like to exit simply enter \"XX\" ')
+	user_choice = user_choice.upper()
+	if ( len(user_choice) < 2 or len(user_choice) > 3 ):
+		print 'You\'ve entered something a bit funky. Try again. If you want Jacksonville for example, enter JAX.'
+	elif user_choice == "XX":
+		req = False
+	else:
+		TeamList = LstDict[user_choice]
+		TeamName = TeamDict[user_choice]
+		print 'ESPN ranked the %s as:\n#%s week one,\n#%s week two,\n#%s week three,\n#%s week four\n#%s week five\n#%s week six\n#%s week seven\n#%s week eigth\n#%s week nine\n#%s week ten.' % (TeamName, TeamList[0], TeamList[1], TeamList[2], TeamList[3], TeamList[4], TeamList[5], TeamList[6], TeamList[7], TeamList[8], TeamList[9])
+
+
+
+
+
+
