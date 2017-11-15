@@ -547,6 +547,19 @@ TB_list.append((TeamOrder10.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder10.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder10.index('Washington Redskins') + 1))
 
+def get_rank(team_list, index):
+	if ( index >= len(team_list) ):
+		return 'N/A'
+	else:
+		return '#%s' % (team_list[index])
+
+def print_weekly_rankings(team_list):
+	for x in range(0, 17):
+		print 'Week %s: %s' % (x + 1, get_rank(team_list, x))
+
+def print_team_title(team_name):
+	print 'ESPN ranked the %s as:' % (team_name)
+
 req = True
 while req:
 	print 'This app lists ESPN experts\' rankings for the team of your choice.'
@@ -559,4 +572,5 @@ while req:
 	else:
 		TeamList = LstDict[user_choice]
 		TeamName = TeamDict[user_choice]
-		print 'ESPN ranked the %s as:\nWeek 1: #%s\nWeek 2: #%s\nWeek 3: #%s\nWeek 4: #%s\nWeek 5: #%s\nWeek 6: #%s\nWeek 7: #%s\nWeek 8: #%s\nWeek 9: #%s\nWeek 10: #%s' % (TeamName, TeamList[0], TeamList[1], TeamList[2], TeamList[3], TeamList[4], TeamList[5], TeamList[6], TeamList[7], TeamList[8], TeamList[9])
+		print_team_title(TeamName)
+		print_weekly_rankings(TeamList)
