@@ -13,3 +13,18 @@ espn_urls = ['http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170815/2017-
 'http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171107/nfl-2017-week-10-power-rankings-biggest-risers-faller-preseason-philadelphia-eagles-new-england-patriots-pittsburgh-steelers-top-board',
 'http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171114/nfl-2017-week-11-power-rankings-win-projections-all-32-teams-new-orleans-saints-join-philadelphia-eagles-new-england-patriots-top',
 ]
+
+#from bs4 import BeautifulSoup
+#import urllib2
+#import re
+#
+#class Google:
+#    @classmethod
+#    def search(self, search):
+#        page = requests.open("http://www.google.com/search?q="+search)
+#        soup = BeautifulSoup(page.content)
+#        links = soup.find_all("a",href=re.compile("(?<=/url\?q=)(htt.*://.*)"))
+#        urls = [re.split(":(?=http)",link["href"].replace("/url?q=",""))[0] for link in links]
+#        return [url for url in urls if 'webcache' not in url]
+#
+#print Google.search("ESPN Power Rankings")
