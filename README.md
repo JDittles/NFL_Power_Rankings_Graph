@@ -1,5 +1,4 @@
-# NFL_Power_Rankings_Graph
-# Alright, so let's see how bad I can mess this puppy up.
+# NFL Power Rankings Graph
 
 ## Setup
 
@@ -10,5 +9,10 @@ sudo pip install beautifulsoup4
 
 ## Run the script!
 
-Open the `ESPN_Scraper/Scrape_ListBuild.py` file and you'll be prompted
-for which team you'd like to view power rankings for!
+Right now we're just scraping from ESPN, so just open
+`Scrapers/ESPN_Scraper.py` and you'll be prompted for which team you'd
+like to view power rankings for!
+
+There's a directory available if you're unsure of your team's city code
+
+To exit type 'xx'
