@@ -6,7 +6,7 @@
 	names in order of NFL Power Ranking; Future iterations will then
 	figure out how to use this list'''
 from bs4 import BeautifulSoup, SoupStrainer
-from Teams import TeamNames, TeamDict
+from Teams import TeamNames, TeamDict, TeamSymbol
 import re
 import urllib2
 
@@ -486,15 +486,25 @@ def print_weekly_rankings(team_list):
 def print_team_title(team_name):
 	print 'ESPN ranked the %s as:' % (team_name)
 
+def team_directory():
+	SymKey = 0
+	for each in TeamNames:
+		print "Type %s for %s" % (TeamSymbol[SymKey], each)
+		SymKey+=1
+
 req = True
 while req:
 	print 'This app lists ESPN experts\' rankings for the team of your choice.'
 	user_choice = raw_input('Simply enter the 2-3 digit city code for the team from which you would like data.\n If you\'d like to exit simply enter \"XX\" ')
 	user_choice = user_choice.upper()
-	if ( len(user_choice) < 2 or len(user_choice) > 3 ):
-		print 'You\'ve entered something a bit funky. Try again. If you want Jacksonville for example, enter JAX.'
+	if ( len(user_choice) < 2 or len(user_choice) > 3):
+		print 'You\'ve entered something a bit funky. Try again. If you\'d like to view a directory of team names enter \'DIR\' '
 	elif user_choice == "XX":
 		req = False
+	elif user_choice == "DIR":
+		team_directory()
+	elif user_choice != TeamDict:
+		print 'You\'ve entered something a bit funky. Try again. If you\'d like to view a directory of team names enter \'DIR\' '
 	else:
 		TeamList = LstDict[user_choice]
 		TeamName = TeamDict[user_choice]
