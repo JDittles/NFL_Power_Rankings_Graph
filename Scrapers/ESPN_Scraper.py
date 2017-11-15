@@ -5,84 +5,10 @@
 	the Los Angeles Chargers don't yet exist) and returns the team
 	names in order of NFL Power Ranking; Future iterations will then
 	figure out how to use this list'''
-from bs4 import BeautifulSoup
-from bs4 import SoupStrainer
+from bs4 import BeautifulSoup, SoupStrainer
+from Teams import TeamNames, TeamDict, TeamSymbol
 import re
 import urllib2
-# The following will pull team names from another doc depending on year...
-#
-# TeamNames=[]
-# with open('TeamNamesCurrent.txt', 'r') as L:
-# 	for each in L:
-# 		TeamNames.append(each)
-#		print each
-#
-TeamNames=['Arizona Cardinals',
-'Atlanta Falcons',
-'Baltimore Ravens',
-'Buffalo Bills',
-'Carolina Panthers',
-'Chicago Bears',
-'Cincinnati Bengals',
-'Cleveland Browns',
-'Dallas Cowboys',
-'Denver Broncos',
-'Detroit Lions',
-'Green Bay Packers',
-'Houston Texans',
-'Indianapolis Colts',
-'Jacksonville Jaguars',
-'Kansas City Chiefs',
-'Los Angeles Chargers',
-'Los Angeles Rams',
-'Miami Dolphins',
-'Minnesota Vikings',
-'New England Patriots',
-'New Orleans Saints',
-'New York Giants',
-'New York Jets',
-'Oakland Raiders',
-'Philadelphia Eagles',
-'Pittsburgh Steelers',
-'San Francisco 49ers',
-'Seattle Seahawks',
-'Tampa Bay Buccaneers',
-'Tennessee Titans',
-'Washington Redskins'
-]
-TeamDict={ 'ARI' : 'Arizona Cardinals',
-'ATL' : 'Atlanta Falcons',
-'BAL' : 'Baltimore Ravens',
-'BUF' : 'Buffalo Bills',
-'CAR' : 'Carolina Panthers',
-'CHI' : 'Chicago Bears',
-'CIN' : 'Cincinnati Bengals',
-'CLE' : 'Cleveland Browns',
-'DAL' : 'Dallas Cowboys',
-'DEN' : 'Denver Broncos',
-'DET' : 'Detroit Lions',
-'GB' : 'Green Bay Packers',
-'HOU' : 'Houston Texans',
-'IND' : 'Indianapolis Colts',
-'JAX' : 'Jacksonville Jaguars',
-'KC' : 'Kansas City Chiefs',
-'LAC' : 'Los Angeles Chargers',
-'LAR' : 'Los Angeles Rams',
-'MIA' : 'Miami Dolphins',
-'MIN' : 'Minnesota Vikings',
-'NE' : 'New England Patriots',
-'NO' : 'New Orleans Saints',
-'NYG' : 'New York Giants',
-'NYJ' : 'New York Jets',
-'OAK' : 'Oakland Raiders',
-'PHI' : 'Philadelphia Eagles',
-'PIT' : 'Pittsburgh Steelers',
-'SF' : 'San Francisco 49ers',
-'SEA' : 'Seattle Seahawks',
-'TB' : 'Tampa Bay Buccaneers',
-'TEN' : 'Tennessee Titans',
-'WAS' : 'Washington Redskins'
-}
 
 ARI_list = []
 ATL_list = []
@@ -154,6 +80,8 @@ LstDict = { 'ARI' : ARI_list,
 def GetTeamName(user_choice):
 	return (TeamDict[user_choice])
 
+print 'Alright, starting it up!'
+
 #WEEK1
 response1 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170815/2017-preseason-nfl-power-rankings-new-england-patriots-atlanta-falcons-seattle-seahawks-front')
 html1 = response1.read()
@@ -196,6 +124,8 @@ TB_list.append((TeamOrder1.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder1.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder1.index('Washington Redskins') + 1))
 
+print '...'
+
 #WEEK2
 response2 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170912/nfl-2017-week-2-power-rankings-overreaction-edition-pittsburgh-steelers-green-bay-packers-kansas-city-chiefs-make-early-moves')
 html2 = response2.read()
@@ -234,6 +164,8 @@ SEA_list.append((TeamOrder2.index('Seattle Seahawks') + 1))
 TB_list.append((TeamOrder2.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder2.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder2.index('Washington Redskins') + 1))
+
+print 'Stitching up the laces'
 
 #WEEK3
 response3 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170919/nfl-2017-week-3-power-rankings-let-optimistic-atlanta-falcons-kansas-city-chiefs-pittsburgh-steelers-top-our-board')
@@ -274,6 +206,8 @@ TB_list.append((TeamOrder3.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder3.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder3.index('Washington Redskins') + 1))
 
+print '...'
+
 #WEEK4
 response4 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170926/nfl-2017-week-4-power-rankings-atlanta-falcons-kansas-city-chiefs-new-england-patriots-quarterbacks')
 html4 = response4.read()
@@ -312,6 +246,8 @@ SEA_list.append((TeamOrder4.index('Seattle Seahawks') + 1))
 TB_list.append((TeamOrder4.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder4.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder4.index('Washington Redskins') + 1))
+
+print 'Insuring the jock strap is secure'
 
 #WEEK5
 response5 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171003/nfl-2017-week-5-power-rankings-kansas-city-chiefs-green-bay-packers-atlanta-falcons-top-our-board')
@@ -352,6 +288,8 @@ TB_list.append((TeamOrder5.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder5.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder5.index('Washington Redskins') + 1))
 
+print '...'
+
 #WEEK6
 response6 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171010/nfl-2017-week-6-power-rankings-kansas-city-chiefs-green-bay-packers-atlanta-falcons-lead-playoff-chances')
 html6 = response6.read()
@@ -390,6 +328,8 @@ SEA_list.append((TeamOrder6.index('Seattle Seahawks') + 1))
 TB_list.append((TeamOrder6.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder6.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder6.index('Washington Redskins') + 1))
+
+print 'All systems go, coach.'
 
 #WEEK7
 response7 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171017/nfl-2017-week-7-power-rankings-kansas-city-chiefs-philadelphia-eagles-new-england-patriots-top-our-board-remaining-schedules')
@@ -430,6 +370,8 @@ TB_list.append((TeamOrder7.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder7.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder7.index('Washington Redskins') + 1))
 
+print '...'
+
 #WEEK8
 response8 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171024/nfl-2017-week-8-power-rankings-new-england-patriots-unseat-kansas-city-chiefs-no-1-chances-win-division')
 html8 = response8.read()
@@ -468,6 +410,8 @@ SEA_list.append((TeamOrder8.index('Seattle Seahawks') + 1))
 TB_list.append((TeamOrder8.index('Tampa Bay Buccaneers') + 1))
 TEN_list.append((TeamOrder8.index('Tennessee Titans') + 1))
 WAS_list.append((TeamOrder8.index('Washington Redskins') + 1))
+
+print 'Let\'s eat another \'W\', boys!\n'
 
 #WEEK9
 response9 = urllib2.urlopen('http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171031/nfl-2017-week-9-power-rankings-scariest-trends-all-32-teams-philadelphia-eagles-new-england-patriots-kansas-city-chiefs-top-board')
@@ -560,15 +504,25 @@ def print_weekly_rankings(team_list):
 def print_team_title(team_name):
 	print 'ESPN ranked the %s as:' % (team_name)
 
+def team_directory():
+	SymKey = 0
+	for each in TeamNames:
+		print "Type %s for %s" % (TeamSymbol[SymKey], each)
+		SymKey+=1
+
 req = True
 while req:
-	print 'This app lists ESPN experts\' rankings for the team of your choice.'
-	user_choice = raw_input('Simply enter the 2-3 digit city code for the team from which you would like data.\n If you\'d like to exit simply enter \"XX\" ')
+	print 'This app lists ESPN experts\' rankings for the team of your choice.\n'
+	user_choice = raw_input('Simply enter the 2-3 digit city code for the team from which you would like data.\nUnsure of your team\'s city code? Just type \'DIR\'\nWhen you\'re ready to exit simply enter \"XX\" ')
 	user_choice = user_choice.upper()
-	if ( len(user_choice) < 2 or len(user_choice) > 3 ):
-		print 'You\'ve entered something a bit funky. Try again. If you want Jacksonville for example, enter JAX.'
+	if ( len(user_choice) < 2 or len(user_choice) > 3):
+		print 'You\'ve entered something a bit funky. Try again. If you\'d like to view a directory of team names enter \'DIR\' '
 	elif user_choice == "XX":
 		req = False
+	elif user_choice == "DIR":
+		team_directory()
+	elif user_choice != TeamDict:
+		print 'You\'ve entered something a bit funky. Try again. If you\'d like to view a directory of team names enter \'DIR\' '
 	else:
 		TeamList = LstDict[user_choice]
 		TeamName = TeamDict[user_choice]
