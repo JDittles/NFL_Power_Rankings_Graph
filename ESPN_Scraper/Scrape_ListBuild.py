@@ -2,7 +2,7 @@
 	scrapes its HTML, compares against an alphabetical list of 32 NFL
 	teams (imported from 'Team Names Current' in order to prepare for
 	future team moves and possibly historical data where, for example,
-	the Los Angeles Chargers don't yet exist) and returns the team 
+	the Los Angeles Chargers don't yet exist) and returns the team
 	names in order of NFL Power Ranking; Future iterations will then
 	figure out how to use this list'''
 from bs4 import BeautifulSoup
@@ -559,10 +559,4 @@ while req:
 	else:
 		TeamList = LstDict[user_choice]
 		TeamName = TeamDict[user_choice]
-		print 'ESPN ranked the %s as:\n#%s week one,\n#%s week two,\n#%s week three,\n#%s week four\n#%s week five\n#%s week six\n#%s week seven\n#%s week eigth\n#%s week nine\n#%s week ten.' % (TeamName, TeamList[0], TeamList[1], TeamList[2], TeamList[3], TeamList[4], TeamList[5], TeamList[6], TeamList[7], TeamList[8], TeamList[9])
-
-
-
-
-
-
+		print 'ESPN ranked the %s as:\nWeek 1: #%s\nWeek 2: #%s\nWeek 3: #%s\nWeek 4: #%s\nWeek 5: #%s\nWeek 6: #%s\nWeek 7: #%s\nWeek 8: #%s\nWeek 9: #%s\nWeek 10: #%s' % (TeamName, TeamList[0], TeamList[1], TeamList[2], TeamList[3], TeamList[4], TeamList[5], TeamList[6], TeamList[7], TeamList[8], TeamList[9])
