@@ -5,84 +5,10 @@
 	the Los Angeles Chargers don't yet exist) and returns the team
 	names in order of NFL Power Ranking; Future iterations will then
 	figure out how to use this list'''
-from bs4 import BeautifulSoup
-from bs4 import SoupStrainer
+from bs4 import BeautifulSoup, SoupStrainer
+from Teams import TeamNames, TeamDict
 import re
 import urllib2
-# The following will pull team names from another doc depending on year...
-#
-# TeamNames=[]
-# with open('TeamNamesCurrent.txt', 'r') as L:
-# 	for each in L:
-# 		TeamNames.append(each)
-#		print each
-#
-TeamNames=['Arizona Cardinals',
-'Atlanta Falcons',
-'Baltimore Ravens',
-'Buffalo Bills',
-'Carolina Panthers',
-'Chicago Bears',
-'Cincinnati Bengals',
-'Cleveland Browns',
-'Dallas Cowboys',
-'Denver Broncos',
-'Detroit Lions',
-'Green Bay Packers',
-'Houston Texans',
-'Indianapolis Colts',
-'Jacksonville Jaguars',
-'Kansas City Chiefs',
-'Los Angeles Chargers',
-'Los Angeles Rams',
-'Miami Dolphins',
-'Minnesota Vikings',
-'New England Patriots',
-'New Orleans Saints',
-'New York Giants',
-'New York Jets',
-'Oakland Raiders',
-'Philadelphia Eagles',
-'Pittsburgh Steelers',
-'San Francisco 49ers',
-'Seattle Seahawks',
-'Tampa Bay Buccaneers',
-'Tennessee Titans',
-'Washington Redskins'
-]
-TeamDict={ 'ARI' : 'Arizona Cardinals',
-'ATL' : 'Atlanta Falcons',
-'BAL' : 'Baltimore Ravens',
-'BUF' : 'Buffalo Bills',
-'CAR' : 'Carolina Panthers',
-'CHI' : 'Chicago Bears',
-'CIN' : 'Cincinnati Bengals',
-'CLE' : 'Cleveland Browns',
-'DAL' : 'Dallas Cowboys',
-'DEN' : 'Denver Broncos',
-'DET' : 'Detroit Lions',
-'GB' : 'Green Bay Packers',
-'HOU' : 'Houston Texans',
-'IND' : 'Indianapolis Colts',
-'JAX' : 'Jacksonville Jaguars',
-'KC' : 'Kansas City Chiefs',
-'LAC' : 'Los Angeles Chargers',
-'LAR' : 'Los Angeles Rams',
-'MIA' : 'Miami Dolphins',
-'MIN' : 'Minnesota Vikings',
-'NE' : 'New England Patriots',
-'NO' : 'New Orleans Saints',
-'NYG' : 'New York Giants',
-'NYJ' : 'New York Jets',
-'OAK' : 'Oakland Raiders',
-'PHI' : 'Philadelphia Eagles',
-'PIT' : 'Pittsburgh Steelers',
-'SF' : 'San Francisco 49ers',
-'SEA' : 'Seattle Seahawks',
-'TB' : 'Tampa Bay Buccaneers',
-'TEN' : 'Tennessee Titans',
-'WAS' : 'Washington Redskins'
-}
 
 ARI_list = []
 ATL_list = []
