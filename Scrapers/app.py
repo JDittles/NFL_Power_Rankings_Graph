@@ -1,5 +1,5 @@
 import plotly 
-plotly.tools.set_credentials_file(username='CodeBros', api_key='hpNSBNmapnnHGKhDIQig')
+plotly.tools.set_credentials_file(username='CodeBros', api_key='vp2NJ9R0g2Wvd4ugm9rm')
 import plotly.plotly as py
 from plotly.graph_objs import *
 import plotly.graph_objs as go
@@ -29,3 +29,4 @@ def graph_power_rankings():
     fig = go.Figure(data=data, layout=layout)
     py.plot(fig)
 
+graph_power_rankings()
