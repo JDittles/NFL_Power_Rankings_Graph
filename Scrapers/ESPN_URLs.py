@@ -14,6 +14,7 @@ espn_urls = ['http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx170815/2017-
 'http://www.espn.com/nfl/story/_/page/NFLpowerrankingsx171114/nfl-2017-week-11-power-rankings-win-projections-all-32-teams-new-orleans-saints-join-philadelphia-eagles-new-england-patriots-top',
 ]
 
+#Working on getting a Google script to run according to dates in order to pull new URLs each week
 #from bs4 import BeautifulSoup
 #import urllib2
 #import re

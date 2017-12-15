@@ -24,6 +24,24 @@ def build_espn_rankings():
 			indx = TeamDict.get(each)
 			lst.append(team_order[week].index(indx)+1)
 		week += 1
+		if week == 2:
+			print "Tightening the jock strap\n"
+		elif week == 3:
+			print "...\n"
+		elif week == 4:
+			print "Stretching out the glutes\n"
+		elif week == 5:
+			print "...\n"
+		elif week == 6:
+			print "Gameplanning the coin flip\n"
+		elif week == 7:
+			print "...\n"
+		elif week == 8:
+			print "Fly Eagles Fly!\n"
+		elif week == 9:
+			print "...\n"
+		elif week == 10:
+			print "Here we go!"
 
 def get_rank(team_list, index):
 	if ( index >= len(team_list) ):
@@ -45,10 +63,11 @@ def team_directory():
 		SymKey+=1
 
 def run_espn_scraper():
+	print '\nThis app lists ESPN experts\' rankings for the team of your choice.\n\nOne Moment while we stitch up our cleats and check ball pressure.\n'
 	build_espn_rankings()
 	req = True
 	while req:
-		user_choice = raw_input('\nEnter the 2-3 digit city code for your team.')
+		user_choice = raw_input('\nEnter the 2-3 digit city code for your team.\nUnsure of your team\'s city code? Just type \'DIR\'\nWhen you\'re ready to exit simply enter \"XX\" ')
 		user_choice = user_choice.upper()
 		if ( len(user_choice) < 2 or len(user_choice) > 3):
 			print 'You\'ve entered something a bit funky. Try again. If you\'d like to view a directory of team names enter \"DIR\" '
@@ -61,3 +80,5 @@ def run_espn_scraper():
 			TeamName = TeamDict[user_choice]
 			print_team_title(TeamName)
 			print_weekly_rankings(TeamList)
+
+run_espn_scraper()
